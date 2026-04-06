@@ -1,0 +1,7 @@
+{
+  "name": "antimetal",
+  "version": "1.0.0",
+  "description": "Bring Antimetal's software investigation intelligence into Cursor. Triage problems, investigate root causes, fetch observability artifacts, and apply remediations—all without leaving your editor.",
+  "author": "Antimetal",
+  "repository": "https://github.com/antimetal/skills"
+}
