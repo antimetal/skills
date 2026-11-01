@@ -49,5 +49,5 @@ Adapt paths, package managers and tooling to the local environment. Show every c
 
 - Suggest how to verify the fix works (tests to run, endpoints to hit, metrics to watch).
 - If you open a pull request for an Issue, put the Issue's `issueUrl` in its description so Antimetal can link it. Antimetal reads Issue URLs only, so an Improvement is linked only through `attach_link`.
-- If `attach_link` is available, call it with the URL of each pull request, commit, ticket or doc you make or find for the Issue or Improvement. Skip Antimetal's own fix pull request.
+- If `attach_link` is available, call it with the URL of each pull request, commit, ticket or doc you make or find for the Issue or Improvement, and a sentence on why it is related. Skip Antimetal's own fix pull request.
 - Do not mark the Issue resolved when you open a pull request. When a linked pull request merges, Antimetal moves the Issue to Monitoring on its own. If the user fixed it another way and asks, call `update_issue_status` or `update_improvement_status` with `resolved`.
