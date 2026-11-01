@@ -47,7 +47,7 @@ If there is no `rootCause` yet, check `investigationFailed`. If it is true, the 
 
 ### Improvements (`get_improvement_report`)
 
-It returns `improvement` and `report`. `report` is null while the investigation runs. The graph is in `report.causalTreeV2` and reads like an Issue's `causalGraph`. `list_related_work` returns the Improvement's URL as `item.url`.
+It returns `improvement` and `report`. `report` is null while the investigation runs. It holds `rootCause`, `timeline` and the graph in `report.causalGraph` (`report.causalTreeV2` on older servers), which reads like an Issue's `causalGraph`. The Improvement's URL is `improvementUrl` in the result, or `item.url` from `list_related_work` on older servers.
 
 Walk the user through the findings and turn a dense report into a clear picture. Then point them to the item's URL for the full report.
 
