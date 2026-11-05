@@ -32,6 +32,8 @@ Install from the [Cursor Marketplace](https://cursor.com/marketplace) by searchi
 
 - **`/investigate`** — Entry point for any software problem. Searches issues, queries Antimetal's AI, reads investigative reports and causal graphs, and routes to fix
 - **`/fix`** — Apply Antimetal's remediation to your codebase, adapted for your local environment
+- **`/configure-semantic-tags`** — Define investigation and remediation vocabularies and selection criteria for future runs
+- **`/configure-severity-rules`** — Update organization severity guidance for future assessments
 - **`/antimetal-mcp-setup`** — Configure the MCP connection (OAuth or API key)
 
 ### MCP Server Tools
@@ -45,6 +47,8 @@ Connects to Antimetal's remote MCP server at `https://mcp.antimetal.com`, provid
 | `get_issue_fixes` | Remediation steps (code changes, CLI commands, context) |
 | `investigate_issue` | Create a new issue and start async automated investigation |
 | `get_artifact` | Retrieve raw evidence: logs, traces, metrics, events, files, topology |
+| `get_semantic_tag_configuration` / `update_semantic_tag_configuration` | Read and update an organization's tag definitions for one source |
+| `get_severity_rules` / `update_severity_rules` | Read and update organization severity guidance |
 | `ask` | Ask Antimetal's AI about infrastructure, software, deployments, telemetry, logs, code |
 
 ## Authentication
@@ -74,6 +78,8 @@ antimetal/skills/
 │   └── plugin.json
 ├── skills/                  # Agent skills
 │   ├── antimetal-mcp-setup/
+│   ├── configure-semantic-tags/
+│   ├── configure-severity-rules/
 │   ├── investigate/
 │   └── fix/
 ├── .mcp.json               # Claude Code MCP config

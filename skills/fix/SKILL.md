@@ -58,3 +58,10 @@ Present these so the user understands the causal chain: "Root cause was X, this 
 
 - Suggest how to verify the fix works (tests to run, endpoints to hit, metrics to watch)
 - Let the user decide whether to mark the issue as resolved
+
+## Lasting remediation categories
+
+When the user wants future fixes labeled by a recurring characteristic, use
+**configure-semantic-tags** with the remediation source. These labels are separate
+from fix execution outcomes and do not modify existing fixes. A request to apply
+or find a fix does not itself authorize changing the organization's vocabulary.
