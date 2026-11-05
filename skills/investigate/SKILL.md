@@ -105,3 +105,12 @@ When the user asks about the status of an issue or investigation (e.g., "is the 
 Investigate is the command center, not the mechanic. You do NOT:
 
 - Apply code fixes (that's **fix**)
+
+## Lasting classification preferences
+
+When the user wants a recurring category for future findings, use
+**configure-semantic-tags** with the investigation source. When the user states
+lasting business urgency criteria, use **configure-severity-rules**. A request
+to find a type of issue or to prioritize one incident does not itself authorize
+changing organization settings. Continue the investigation while clarifying any
+ambiguous policy request.
