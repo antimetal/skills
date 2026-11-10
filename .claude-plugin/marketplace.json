@@ -8,7 +8,7 @@
     {
       "name": "antimetal",
       "source": "./",
-      "description": "Bring Antimetal's software investigation intelligence into Claude Code. Triage problems, investigate root causes, fetch observability artifacts, and apply remediations."
+      "description": "Bring Antimetal into Claude Code. Find and investigate Issues happening now and Improvements Antimetal found before they hurt, read root causes and evidence, and apply fixes from your terminal."
     }
   ]
 }

@@ -12,9 +12,9 @@ report them; don't just reorder the list in your answer.
 
 ## List the ranking (`search_issues`)
 
-Call `search_issues` with `sort: "priority"`. Filter for open work by default
-(`investigating`, `ready_to_fix`), and add `severity`, `environment`, `activeFrom` or
-other filters when the user names a scope. `limit` sets how many come back (up to 500
+Call `search_issues` with `sort: "priority"`. `status` takes one value, so pass
+`ready_to_fix` for work that is ready, or run a second call with `investigating`. Add
+`severity`, `environment`, `activeFrom` or other filters when the user names a scope. `limit` sets how many come back (up to 500
 with priority sorting, no cursors). Load more by raising `limit`, not by paging.
 
 The ranking applies, in order:
