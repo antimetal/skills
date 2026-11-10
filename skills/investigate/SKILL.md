@@ -13,9 +13,11 @@ Any time the user describes a specific problem or symptom (e.g., "deploys are fa
 
 ### Step 1: Search (`search_issues`)
 
-Search right away — don't ask clarifying questions first. Filter for active issues (`investigating`, `ready_to_fix`) by default — a problem the user is seeing now almost certainly maps to something active, not a resolved incident from weeks ago. Favor recent issues over old ones. Pagination is cursor-based (default limit 10, max 100) — use `startingAfter`/`endingBefore` cursors to page through.
+Search right away — don't ask clarifying questions first. Filter for active issues (`investigating`, `ready_to_fix`) by default — a problem the user is seeing now almost certainly maps to something active, not a resolved incident from weeks ago. Favor recent issues over old ones. The newest-first list pages with `startingAfter`/`endingBefore` cursors (default limit 10, max 100).
 
-**Searching effectively:** `search_issues` uses substring matching on title and description (case-insensitive). Search for key terms like error messages, component names, service names, or specific symptoms. Try variations if your first search doesn't yield results — e.g., "database timeout" vs "database" vs "timeout".
+**Searching effectively:** by default `search_issues` matches the literal text of titles and descriptions (case-insensitive). Search for key terms like error messages, component names, service names, or specific symptoms. When the user describes a symptom in their own words, which may not match how an issue is titled, use `searchMode: "semantic"`, which ranks issues by meaning. If the first search finds nothing, try variations, for example "database timeout", "database" and "timeout".
+
+When the user asks what matters most rather than about one problem, use **review-priorities**.
 
 ### Step 2: Match Found → Pull the Report (`get_issue_report`)
 
@@ -105,6 +107,14 @@ When the user asks about the status of an issue or investigation (e.g., "is the 
 Investigate is the command center, not the mechanic. You do NOT:
 
 - Apply code fixes (that's **fix**)
+
+## Report tool problems
+
+If a tool result surprised you, a field you needed was missing, an error did not say
+how to fix the call, or the task needed a workaround, call `submit_tool_feedback`
+once for that problem. Name the tools, say what you expected and what you got, and
+what would have helped. Don't call it after calls that went as expected, and leave out
+secrets. Report quality goes to `submit_issue_feedback` instead.
 
 ## Lasting classification preferences
 

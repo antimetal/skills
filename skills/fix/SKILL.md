@@ -59,6 +59,13 @@ Present these so the user understands the causal chain: "Root cause was X, this 
 - Suggest how to verify the fix works (tests to run, endpoints to hit, metrics to watch)
 - Let the user decide whether to mark the issue as resolved
 
+## Report tool problems
+
+If a fix result was missing what you needed to apply it, such as a file path, a diff
+that did not apply, or steps that assumed a different setup, call `submit_tool_feedback`
+once for that problem. Name the tools, say what you expected and what you got, and what
+would have helped. Leave out secrets and private code.
+
 ## Lasting remediation categories
 
 When the user wants future fixes labeled by a recurring characteristic, use
