@@ -1,6 +1,6 @@
 # Antimetal Skills
 
-Bring [Antimetal's](https://antimetal.com) software investigation intelligence into Claude Code and Cursor. Triage problems, investigate root causes, fetch observability artifacts, and apply remediations—all from your terminal.
+Bring [Antimetal](https://antimetal.com) into Claude Code and Cursor. Find and investigate Issues happening now and Improvements Antimetal found before they hurt, read root causes and evidence, and apply fixes from your editor.
 
 ## Installation
 
@@ -30,9 +30,9 @@ Install from the [Cursor Marketplace](https://cursor.com/marketplace) by searchi
 
 ### Skills
 
-- **`/investigate`** — Entry point for any software problem. Searches issues, queries Antimetal's AI, reads investigative reports and causal graphs, and routes to fix
-- **`/fix`** — Apply Antimetal's remediation to your codebase, adapted for your local environment
-- **`/antimetal-mcp-setup`** — Configure the MCP connection (OAuth or API key)
+- **`/investigate`**: entry point for anything wrong or worth fixing. Searches Issues and Improvements, queries Antimetal's AI, reads investigative reports and causal graphs, and routes to fix
+- **`/fix`**: applies Antimetal's fix for an Issue or Improvement to your codebase, adapted for your local environment
+- **`/antimetal-mcp-setup`**: configures the MCP connection (OAuth or API key)
 
 ### MCP Server Tools
 
@@ -41,27 +41,26 @@ Connects to Antimetal's remote MCP server at `https://mcp.antimetal.com`, provid
 | Tool | Description |
 |------|-------------|
 | `search_issues` | Paginated list of issues with severity, status, and environment |
-| `get_issue_report` | Full investigative report—root cause, timeline, causal graph |
-| `get_issue_fixes` | Remediation steps (code changes, CLI commands, context) |
+| `get_issue_report` | Full investigative report: root cause, timeline, causal graph |
+| `get_issue_fixes` | The fix: a code diff or operational steps, and Antimetal's pull request when it opened one |
 | `investigate_issue` | Create a new issue and start async automated investigation |
 | `get_artifact` | Retrieve raw evidence: logs, traces, metrics, events, files, topology |
 | `ask` | Ask Antimetal's AI about infrastructure, software, deployments, telemetry, logs, code |
+| `update_issue_status` | Set an Issue's status, for example resolved |
+| `search_improvements` / `get_improvement_report` / `get_improvement_fixes` | Non-urgent Improvements, which use their own tools |
+| `list_related_work` / `attach_link` | Pull requests, commits, tickets and docs linked to an Issue or Improvement, and linking new ones |
+
+The full tool list depends on your organization's setup.
 
 ## Authentication
 
-### Claude Code: OAuth (Automatic)
+### Claude Code and Cursor: OAuth (Automatic)
 
-When you first use an Antimetal tool or skill, Claude Code will open a browser window to log in to your Antimetal account via OAuth. Tokens are stored securely and refreshed automatically.
+When you first use an Antimetal tool or skill, your editor opens a browser window to log in to your Antimetal account via OAuth. Tokens are stored securely and refreshed automatically. If a token expires or is revoked, the editor asks you to log in again.
 
-### Cursor: API Key
+### API Key (fallback)
 
-1. Sign up at [antimetal.com](https://antimetal.com) and generate an API key from [API Keys Settings](https://overlook.antimetal.com/settings/api-keys)
-2. Set the environment variable:
-   ```bash
-   export ANTIMETAL_API_KEY="your-api-key-here"
-   ```
-3. Add this to your shell profile (`~/.zshrc`, `~/.bashrc`, etc.) so it persists
-4. Restart Cursor to pick up the environment variable
+If your editor cannot use OAuth, generate an API key from [API Keys Settings](https://overlook.antimetal.com/settings/api-keys) and follow `/antimetal-mcp-setup`. Cursor reads environment variables only as `${env:ANTIMETAL_API_KEY}`.
 
 ## Repository Structure
 
