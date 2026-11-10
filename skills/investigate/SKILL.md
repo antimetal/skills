@@ -23,7 +23,7 @@ Name statuses the way the app does: `investigating` is Preparing, `ready_to_fix`
 - **The user gives a number.** Call `get_issue_report` with it. Searching for a number matches text, not the number.
 - **The user describes a problem happening now** ("deploys are failing", "API latency spiked"). Search Issues right away, without asking clarifying questions first. If no Issue matches and the problem is not urgent, search Improvements.
 - **The user asks about risks, gaps or advice** ("are we missing monitors?", "what does Antimetal suggest for the checkout service?"). Search Improvements first.
-- **The user asks what to work on.** Look at both kinds: `search_issues` with `sort: "priority"`, and `search_improvements` with `status: "ready_to_fix"`. Lead with urgent Issues, then the Improvements whose `riskHorizonAt` is nearest.
+- **The user asks what to work on.** Look at both kinds: `search_issues` with `sort: "priority"`, and `search_improvements` with `status: "ready_to_fix"`. Lead with urgent Issues, then the Improvements whose `riskHorizonAt` is nearest. To explain why Issues rank where they do, or when the user disagrees with the order, use **review-priorities**.
 
 ### Searching Issues (`search_issues`)
 
@@ -131,3 +131,20 @@ Investigate finds and explains; it does not fix. You do NOT:
 
 - Apply code fixes (that's **fix**)
 - Fetch remediation with `get_issue_fixes` or `get_improvement_fixes` (that's **fix**)
+
+## Report tool problems
+
+If a tool result surprised you, a field you needed was missing, an error did not say
+how to fix the call, or the task needed a workaround, call `submit_tool_feedback`
+once for that problem. Name the tools, say what you expected and what you got, and
+what would have helped. Don't call it after calls that went as expected, and leave out
+secrets. Report quality goes to `submit_issue_feedback` or `submit_improvement_feedback` instead.
+
+## Lasting classification preferences
+
+When the user wants a recurring category for future findings, use
+**configure-semantic-tags** with the investigation source. When the user states
+lasting business urgency criteria, use **configure-severity-rules**. A request
+to find a kind of Issue or Improvement, or to prioritize one incident, does not
+itself authorize changing organization settings. Continue the investigation while
+clarifying any ambiguous policy request.
